@@ -1,5 +1,5 @@
 #Workflow - must have a name
-name: Workfow
+name: RSWorkfow
 
 #Tells when workflow should run
 on: 
