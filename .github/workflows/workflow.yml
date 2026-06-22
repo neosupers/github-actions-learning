@@ -33,3 +33,10 @@ jobs:
     steps:
       - name: check patch status
         run: apt list --upgradable
+
+  check-uptime:
+    runs-on:  ubuntu-latest
+    needs: check-update-status
+    steps:
+      -name: checking uptime
+        run: uptime
