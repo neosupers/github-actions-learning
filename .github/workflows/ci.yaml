@@ -1,0 +1,44 @@
+#Workflow - must have a name
+name: Ubuntu-Package-Update
+
+#Tells when workflow should run
+on: 
+  workflow_dispatch:
+
+needs: ubun
+#Jobs - should be inside a workflow
+jobs:
+  say-hello-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name:  Say Hello
+        run: echo "Hello Everyone"
+
+  update-packages:
+    needs: say-hello-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: update packages
+        run: sudo apt update && sudo apt list --upgradable
+
+  Install-packages:
+    runs-on: ubuntu-latest
+    needs: update-packages
+    steps:
+      - name: Check available Packages
+        run: sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove --purge
+        
+  check-update-status:
+    runs-on: ubuntu-latest
+    needs: Install-packages
+    steps:
+      - name: check patch status
+        run: apt list --upgradable
+
+  check-uptime:
+    runs-on:  ubuntu-latest
+    needs: check-update-status
+    steps:
+      - name: checking uptime
+        run: uptime
+    
