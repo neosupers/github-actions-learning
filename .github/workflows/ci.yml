@@ -5,7 +5,7 @@ name: Ubuntu-Package-Update
 on: 
   workflow_dispatch:
 
-needs: ubun
+needs: ubuntu-latest
 #Jobs - should be inside a workflow
 jobs:
   say-hello-job:
