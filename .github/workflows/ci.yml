@@ -41,4 +41,11 @@ jobs:
     steps:
       - name: checking uptime
         run: uptime
+
+  check-updates:
+    runs-on:  ubuntu-tiny
+    needs: check-uptime
+    steps:
+      - name: Checking update on Ubuntu Tiny
+        run: apt update
     
