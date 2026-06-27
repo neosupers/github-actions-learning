@@ -26,4 +26,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ vars.DOCKER_USER }}/sample-python-app:latest
+          # tags: ${{ vars.DOCKER_USER }}/sample-python-app:latest
+          tags: ${{ vars.DOCKER_USER != '' && format('{0}/sample-python-app:latest', vars.DOCKER_USER) || 'sample-python-app:latest' }}
