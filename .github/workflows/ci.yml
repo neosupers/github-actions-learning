@@ -1,7 +1,7 @@
 name: wokflow
 
 on:
-  workflow_dispatch:
+  push: [main]
 
 jobs:
   uptime:
@@ -13,6 +13,7 @@ jobs:
         run: w
 
   update:
+    needs: uptime
     runs-on: ubuntu-latest
     steps:
       - name: Update Cache
@@ -22,6 +23,7 @@ jobs:
         run: sudo apt-get upgrade -y
 
   validate:
+    needs: update
     runs-on: ubuntu-latest
     steps:
       - name: Update Cache
