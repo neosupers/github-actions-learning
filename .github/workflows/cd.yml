@@ -22,4 +22,4 @@ jobs:
           script: |
             mkdir sample-python-app && cd sample-python-app
             docker compose up -d
-            docker image prune -f
+            docker rmi -f neosupers/sample-python-app:latest

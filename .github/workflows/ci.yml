@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [mail]
+    branches: [main]
   
   workflow_run: 
     workflows: [Scan Code]
