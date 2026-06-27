@@ -1,7 +1,22 @@
 name: linter
 
-on: [push]
+on:
+  push:
+    paths: "*.py"
 
 jobs:
   runs-on: ubuntu-latest
+  - name: Checkout Code
+    uses: actions/checkout@v7
+
+  - name: Setup Python
+    uses: actions/setup-python@v6
+    
+  - name: Install Linter
+    run:  pip install ruff
+    
+  - name: Validate Code
+    run:  ruff check .
+
+
   
