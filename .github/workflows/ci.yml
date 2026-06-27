@@ -1,10 +1,9 @@
-#Workflow - must have a name
-name: Ubuntu-Package-Update
+name: Wokflow
 
-#Tells when workflow should run
 on: 
-  workflow_dispatch:
+  workflow-dispatch
 
+<<<<<<< HEAD
 needs: ubuntu-latest
 #Jobs - should be inside a workflow
 jobs:
@@ -49,3 +48,9 @@ jobs:
       - name: Checking update on Ubuntu Tiny
         run: apt update
     
+=======
+jobs:
+  runs-on: ubuntu-latest
+  - name: Uptime
+    run: uptime
+>>>>>>> 68c9f44 (updated workflow)
