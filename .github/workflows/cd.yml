@@ -1,10 +1,12 @@
-name: Deploy App
+name: Deploy
 
 on:
   workflow_dispatch:
-    workflows: [Scan python code syntax]
-    types: [completed]
-    branches: [main]
+
+  workflow_run:  
+    workflows: [Build]
+      types: [completed]
+      branches: [main]
 
 jobs:
   deploy:

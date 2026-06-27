@@ -1,11 +1,11 @@
-name: Build and Push latest Images
+name: Build
 
 on:
   push:
     branches:
       - linter
-    workflow_run: [Scan python code syntax]
-      - types: [completed]
+  workflow_run: [Scan Code]
+    types: [completed]
 
 jobs:
   checkout-code:
