@@ -11,13 +11,13 @@ jobs:
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
         runs-on: self-hosted
         steps:
-          uses: appleboy/ssh-action@v1
-          with:
-            host: ${{ secrets.HOST }}
-            username: ${{ secrets.USERNAME }}
-            password: ${{ secrets.KEY }}
-            port: ${{ secrets.PORT }}
-            script: |
-              mkdir sample-python-app && cd sample-python-app
-              docker compose up -d
-              docker image prune -f
+          - uses: appleboy/ssh-action@v1
+            with:
+              host: ${{ secrets.HOST }}
+              username: ${{ secrets.USERNAME }}
+              password: ${{ secrets.KEY }}
+              port: ${{ secrets.PORT }}
+              script: |
+                mkdir sample-python-app && cd sample-python-app
+                docker compose up -d
+                docker image prune -f
