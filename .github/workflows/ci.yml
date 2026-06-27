@@ -10,4 +10,19 @@ jobs:
       - name: Checking Uptime 
         run: uptime
       - name: Checking User Details
-        run: "who am i"
+        run: w
+
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Cache
+        run: sudo apt-get update
+
+      - name: Install Patches 
+        run: sudo apt-get upgrade -y
+
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Cache
+        run: sudo apt-get dist-upgrade -y
