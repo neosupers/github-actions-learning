@@ -5,8 +5,8 @@ on:
     branches: [linter]
   
   workflow_run: 
-  workflows:  [Scan Code]
-  types: [completed]
+    workflows: [Scan Code]
+    types: [completed]
 
 jobs:
   checkout-code:
