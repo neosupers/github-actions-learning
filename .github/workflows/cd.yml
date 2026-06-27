@@ -21,5 +21,7 @@ jobs:
           # port: ${{ secrets.PORT }}
           script: |
             mkdir sample-python-app && cd sample-python-app
+            git pull origin main
+            docker compose pull
             docker compose up -d
             docker rmi -f neosupers/sample-python-app:latest
