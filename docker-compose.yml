@@ -5,3 +5,8 @@ services:
     pull_policy: always
     ports:
       - "80:80"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 1s
+      timeout: 2s
+      retries: 5
