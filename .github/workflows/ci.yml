@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - linter
+    workflow_run: [Scan python code syntax]
+      - types: [completed]
 
 jobs:
   checkout-code:
