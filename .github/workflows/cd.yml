@@ -18,6 +18,6 @@ jobs:
             password: ${{ secrets.KEY }}
             port: ${{ secrets.PORT }}
             script: |
-            mkdir sample-python-app && cd sample-python-app
-            docker compose up -d
-            docker image prune -f
+              mkdir sample-python-app && cd sample-python-app
+              docker compose up -d
+              docker image prune -f
