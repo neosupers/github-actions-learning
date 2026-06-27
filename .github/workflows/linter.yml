@@ -1,19 +1,20 @@
-name: linter
+name: Scan Code
 
 on:
   push:
+    branches: [main]
     paths: "*.py"
 
 jobs:
   linter:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout Code
         uses: actions/checkout@v7
 
       - name: Setup Python
         uses: actions/setup-python@v6
-        with: {python-version: '3.12'}
+        with: {python-version: '3.14'}
         
       - name: Install Linter
         run:  pip install ruff

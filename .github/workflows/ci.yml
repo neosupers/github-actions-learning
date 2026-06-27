@@ -1,25 +1,29 @@
-name: wokflow
+name: Build
 
 on:
   push:
-    branches:
-      - main
+    branches: [linter]
+  
+  workflow_run: 
+    workflows: [Scan Code]
+    types: [completed]
 
 jobs:
-  uptime:
-    runs-on: ubuntu-latest
+  checkout-code:
+    runs-on: self-hosted  
     steps:
-      - name: Checking Uptime 
-        run: uptime
-      - name: Checking User Details
-        run: w
-
-  bash-completion:
-    needs: uptime
-    runs-on: ubuntu-latest
+      - uses: actions/checkout@v7
+      - uses: docker/login-action@v4
+        with:
+          username: ${{ vars.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PAT }}
+    
+  build-images:
+    needs: checkout-code
+    runs-on: self-hosted
     steps:
-      - name: Update Cache
-        run: sudo apt-get update
-
-      - name: Install bash-completion
-        run: sudo apt-get install bash-completion -y
+      - uses: docker/build-push-action@v7
+        with:
+          context: .
+          push: true
+          tags: ${{ vars.DOCKER_USER }}/sample-python-app:latest
