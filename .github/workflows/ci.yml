@@ -1,9 +1,7 @@
 name: Wokflow
-
-on: 
-  workflow-dispatch
+on: workflow_dispatch
 
 jobs:
-    uptime:
-      - name: Checking Uptime
-        run: uptime
+  uptime:
+    - name: Checking Uptime
+      run: uptime
